@@ -25,30 +25,30 @@ bool isValidWord(const string &word, const set<string> &dict, string fixed )
 {
     bool validity;
     auto pos = dict.find(word);
-    cout << "validating..." << word << endl;
+    //cout << "validating..." << word << endl;
     if (pos != dict.end())
     {
         validity = true;
         for(size_t i = 0; i < fixed.size(); i ++)
         {
           char character = fixed[i];
-          cout << "validating c" << character << endl; 
-          cout << "word " << word << endl; 
-          cout << "fixed " << word << endl; 
+         //cout << "validating c" << character << endl; 
+         //cout << "word " << word << endl; 
+          //cout << "fixed " << word << endl; 
           if(word.find(character) == string::npos)
           {
             return false;
           } 
         }
         
-        cout << "VALID" << endl;
+        //cout << "VALID" << endl;
         return true;
 
     }
     else
     {
         validity = false;
-        cout << "INVALID" << endl;
+        //cout << "INVALID" << endl;
     }
     return validity;
 }
@@ -61,7 +61,7 @@ void wordle_helper(string temp_word,  string &letters_fix, string &letters_float
     {
         if (isValidWord(temp_word, dict, letters_floating))
         {
-            cout << "inserting " << temp_word << endl;
+          //  cout << "inserting " << temp_word << endl;
             combinations.insert(temp_word);
         }
         return;
@@ -71,7 +71,7 @@ void wordle_helper(string temp_word,  string &letters_fix, string &letters_float
     if (letters_fix.size() > temp_word.size() && letters_fix[temp_word.size()] != '-')
     {
         temp_word += letters_fix[temp_word.size()];
-        cout << "Case 2... " << temp_word << endl;
+        //cout << "Case 2... " << temp_word << endl;
         wordle_helper(temp_word, letters_fix, letters_floating, dict, combinations);
         temp_word.pop_back();
     }
@@ -82,26 +82,26 @@ void wordle_helper(string temp_word,  string &letters_fix, string &letters_float
     {
         for (char c = 'a'; c <= 'z'; c++)
         {
-            cout << "C first " << c << endl;
+            //cout << "C first " << c << endl;
             if (letters_fix.size() <= temp_word.size() || letters_fix[temp_word.size()] == '-')
             {
                 // Case #4 current position is empty, assigns a floating character
                 if (letters_floating.find(c) != string::npos)
-                {   cout << "Before Case 4... " << temp_word << endl;
+                {   //cout << "Before Case 4... " << temp_word << endl;
                     temp_word += c;
-                    cout << "C var: " << c << endl;
+                   /* cout << "C var: " << c << endl;
                     cout << "After Case 4... " << temp_word << endl;
                      cout << "Letter Fix Before: " << letters_floating << endl;
-                    cout << "Letter Fix after: " << letters_floating << endl;
+                    cout << "Letter Fix after: " << letters_floating << endl;*/
                     wordle_helper(temp_word, letters_fix, letters_floating, dict, combinations);
                     temp_word.pop_back();
                 }
                 // Case #5 curr not fixed, not float
                 else
                 {
-                    cout << "Case 5 Before... " << temp_word << endl;
+                   // cout << "Case 5 Before... " << temp_word << endl;
                     temp_word += c;
-                    cout << "Case 5 After... " << temp_word << endl;
+                    //cout << "Case 5 After... " << temp_word << endl;
                     wordle_helper(temp_word, letters_fix, letters_floating, dict, combinations);
                     temp_word.pop_back();
                     //continue;
@@ -109,9 +109,9 @@ void wordle_helper(string temp_word,  string &letters_fix, string &letters_float
             }
             else
             {   // Case #6 curr pos fixed, add letter
-                cout << "Before Case 6... " << temp_word << endl;
+              //  cout << "Before Case 6... " << temp_word << endl;
                 temp_word += letters_fix[temp_word.size()];
-                cout << "After Case 6... " << temp_word << endl;
+               // cout << "After Case 6... " << temp_word << endl;
                 wordle_helper(temp_word, letters_fix, letters_floating, dict, combinations);
                 temp_word.pop_back();
             }
@@ -126,7 +126,7 @@ set<string> wordle(const string &in, const string &floating, const set<std::stri
     set<std::string> combinations;
     string letters_fix = in;
     string floating_copy = floating;
-    cout << "wordle starting" << endl;
+   // cout << "wordle starting" << endl;
    /* for(size_t i = 0; i < in.length(); i++)
     {
         if(isalpha(in[i]))

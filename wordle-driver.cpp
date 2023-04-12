@@ -20,14 +20,14 @@ int main(int argc, char* argv[])
     }
     const std::set<std::string>& dict = readDictWords("dict-eng.txt");    
     string in(argv[1]);
-    cout << "in: " << in << endl;
+   // cout << "in: " << in << endl;
 
     string floatingChars;
     if(argc > 2){
         floatingChars = argv[2];
     }
-    cout << "out: " << floatingChars << endl;
-    
+  //  cout << "out: " << floatingChars << endl;
+
     std::set<string> answers;
     answers = wordle(in, floatingChars, dict);
     for(auto s : answers){

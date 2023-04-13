@@ -61,24 +61,9 @@ bool schedule_helper(AvailabilityMatrix avail, const size_t dailyNeed, const siz
     if (worker_num >= (avail.size()))
     {
 
-       /* for(size_t x = 0; x < 3; x++)
-        {
-          bool frfr;
-          frfr = schedule_helper(avail, dailyNeed, maxShifts, NumShiftsTracker, sched, --day, static_cast<Worker_T>(x), shift_num, tries== true);
         
-          if(frfr == true)
-          {
-            return true;
-          } 
-          else
-          {
-            return false;
-          }
-        }
-        */
-     return false;
-     
-
+        cout << "Case -1" << endl;
+        return true;
     }
     // id day = avail size , return true
     if (day == static_cast<int>(avail.size()))
